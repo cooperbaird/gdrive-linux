@@ -21,3 +21,9 @@ I may modify this script later to also monitor file `move` events and make the c
 If there's any files/directories in your Google Drive that you want copied to `GDRIVE_DIR` on your machine, you'll have to explicitly run an `rclone copy`, since this script only copies creations and updates one way (from your machine to Google Drive).
 
 https://rclone.org/commands/rclone_copy/
+
+### (Optional) Run script on startup
+I used `cron` because it's probably the simplest.
+1. `crontab -e`.
+2. Write `@reboot sh /path/to/gdrive.sh` to the file, then save and quit.
+3. Reboot.
