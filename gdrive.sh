@@ -34,5 +34,5 @@ inotifywait -r -m -e modify,create --format "%w%f" --exclude '/\.' \
             remote_path=${remote_path#/}
         fi
         rclone copyto "$change" "$RCLONE_CONF_NAME":"$remote_path"
-        notify-send "gdrive-linux: Uploaded" "$change"
+        notify-send "gdrive-linux: Changed" "$change"
     done
