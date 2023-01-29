@@ -21,3 +21,24 @@ I may modify this script later to also monitor file `move` events and make the c
 If there's any files/directories in your Google Drive that you want copied to `GDRIVE_DIR` on your machine, you'll have to explicitly run an `rclone copy`, since this script only copies creations and updates one way (from your machine to Google Drive).
 
 https://rclone.org/commands/rclone_copy/
+
+### (Optional) Run script on user login
+I do this through a [systemd user service](https://wiki.archlinux.org/title/systemd/User).
+1. `mkdir -p ~/.config/systemd/user`
+2. `cd ~/.config/systemd/user`
+3. `touch gdrive.service`
+4. Open `gdrive.service` in [your favorite Text Editor](https://neovim.io/).
+5. Write the following (replacing the path to `gdrive.sh`)
+```
+[Unit]
+Description=gdrive-linux systemd user service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /path/to/gdrive.sh
+
+[Install]
+WantedBy=default.target
+```
+6. `systemctl --user enable gdrive.service`
+7. `reboot`
