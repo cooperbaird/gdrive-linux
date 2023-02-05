@@ -33,6 +33,8 @@ inotifywait -r -m -e modify,create --format "%w%f" --exclude '/\.' \
         if [ ${remote_path:0:1} = "/" ]; then
             remote_path=${remote_path#/}
         fi
-        rclone copyto "$change" "$RCLONE_CONF_NAME":"$remote_path"
-        notify-send "gdrive-linux: Changed" "$change"
+
+        message="gdrive-linux: Upload Successful"
+        rclone copyto "$change" "$RCLONE_CONF_NAME":"$remote_path" || message="gdrive-linux: ERROR Uploading"
+        notify-send "$message" "$change"
     done
