@@ -42,3 +42,5 @@ WantedBy=default.target
 ```
 6. `systemctl --user enable gdrive.service`
 7. `reboot`
+
+Logs for the current boot can be viewed with `journalctl -b --user -u gdrive.service`.
