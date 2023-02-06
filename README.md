@@ -3,7 +3,7 @@ Simple Google Drive client for Linux.
 
 This script uses [rclone](https://rclone.org/) and [inotify](https://en.wikipedia.org/wiki/Inotify) to monitor a local directory and automatically copy changes to your Google Drive. Directory structure/hierarchy is preserved in the copy and dotfiles are ignored. The script monitors for `create`, `moved_to`, and `modify` events and uses `rclone copyto` instead of `rclone sync` or `bisync` for safety reasons (nothing will be deleted from your Google Drive automatically). This configuration is my personal preference, but the script can be modified to mirror/sync files 1:1 with deletion if you'd like (using `rclone sync` or `bisync`).
 
-Moving files/directories within the monitored local directory will upload a new file/directory in the new location. Likewise, renaming files/directories within the monitored local directory will upload a new file/directory with the new name. The old file/directory will still be in your Google Drive, and you'll have to explicitly delete it if you no longer want it. This script will not delete anything from your Google Drive as-is.
+Moving files/directories within the monitored local directory will upload a new file/directory in the new location on Google Drive. Likewise, renaming files/directories within the monitored local directory will upload a new file/directory with the new name on Google Drive. The old file/directory will still be in your Google Drive, and you'll have to explicitly delete it if you no longer want it. This script will not delete anything from your Google Drive as-is.
 
 ## Prerequisites
 - You'll need to have `rclone` [installed](https://rclone.org/install/), [configured, and linked](https://rclone.org/drive/) to your Google Drive.
@@ -18,7 +18,7 @@ Moving files/directories within the monitored local directory will upload a new 
 6. Run script: `./gdrive.sh`. You'll get a notification each time a file is uploaded to Google Drive.
 
 ### (Optional) Copy some files/directories from Google Drive to your machine
-If there's any files/directories in your Google Drive that you want copied to `GDRIVE_DIR` on your machine, you'll have to explicitly run an `rclone copy`, since this script only copies creations and updates one way (from your machine to Google Drive).
+If there's any files/directories in your Google Drive that you want copied to `GDRIVE_DIR` on your machine, you'll have to explicitly run an `rclone copy`, since this script only copies changes one way (from your machine to Google Drive).
 
 https://rclone.org/commands/rclone_copy/
 
