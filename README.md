@@ -1,7 +1,7 @@
 # gdrive-linux
 Simple Google Drive client for Linux.
 
-This script uses [rclone](https://rclone.org/) and [inotify](https://en.wikipedia.org/wiki/Inotify) to monitor a local directory for changes and automatically copy them to your Google Drive. Directory structure/hierarchy is preserved in the copy and dotfiles are ignored. The script monitors for creations, moves, and updates in the configured local directory and propagates them to your Google Drive. Deleting files locally will not delete them on your Google Drive.
+This script uses [rclone](https://rclone.org/) and [inotify](https://en.wikipedia.org/wiki/Inotify) to monitor a local directory for changes and automatically copy them to your Google Drive. Directory structure/hierarchy is preserved in the copy and dotfiles are ignored. The script monitors for creations, moves/renames, and modifications in the configured local directory and propagates them to your Google Drive. Deleting files locally will not delete them on your Google Drive.
 
 #### Note about moving/renaming files:
 Moving files/directories within the monitored local directory will upload a new file/directory in the new location to Google Drive. Likewise, renaming files/directories within the monitored local directory will upload a new file/directory with the new name to Google Drive. The old file/directory will still be in your Google Drive, and you'll have to explicitly delete it if you no longer want it. This script will not delete anything from your Google Drive as-is.
