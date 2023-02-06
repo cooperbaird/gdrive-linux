@@ -1,9 +1,9 @@
 # gdrive-linux
 Simple Google Drive client for Linux.
 
-This script uses [rclone](https://rclone.org/) and [inotify](https://en.wikipedia.org/wiki/Inotify) to monitor a local directory and automatically copy changes to your Google Drive. Directory structure/hierarchy is preserved in the copy and dotfiles are ignored. The script monitors for `create` and `modify` events and uses `rclone copyto` instead of `rclone sync` or `bisync` for safety reasons (nothing will be deleted from your Google Drive automatically). This configuration is my personal preference, but the script can be modified to mirror/sync files 1:1 with deletion if you'd like (using `rclone sync` or `bisync`).
+This script uses [rclone](https://rclone.org/) and [inotify](https://en.wikipedia.org/wiki/Inotify) to monitor a local directory and automatically copy changes to your Google Drive. Directory structure/hierarchy is preserved in the copy and dotfiles are ignored. The script monitors for `create`, `moved_to`, and `modify` events and uses `rclone copyto` instead of `rclone sync` or `bisync` for safety reasons (nothing will be deleted from your Google Drive automatically). This configuration is my personal preference, but the script can be modified to mirror/sync files 1:1 with deletion if you'd like (using `rclone sync` or `bisync`).
 
-I may modify this script later to also monitor file `move` events and make the corresponding move or rename in Google Drive. I didn't initially include this because it would involve running an `rclone delete` to remove the file from its previous location in Google Drive.
+Moving or renaming files/directories within the monitored local directory will upload a new file/directory in the new location or with the new name. The old file/direcotry will still be in your Google Drive, and you'll have to explicitly delete it if you no longer want it. This script will not delete anything from your Google Drive as-is.
 
 ## Prerequisites
 - You'll need to have `rclone` [installed](https://rclone.org/install/), [configured, and linked](https://rclone.org/drive/) to your Google Drive.
