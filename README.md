@@ -12,7 +12,7 @@ Moving files/directories within the monitored local directory will upload a new 
 
 ## Usage
 1. Download `gdrive.sh`.
-2. Open `gdrive.sh` in [your favorite Text Editor](https://neovim.io/).
+2. Open `gdrive.sh` in your favorite Text Editor.
 3. Change `RCLONE_REMOTE_NAME` to whatever you named your Google Drive remote during rclone setup (if you forgot, you can run `cat ~/.config/rclone/rclone.conf`, and it'll be in square brackets above the drive configuration).
 4. Optionally change `GDRIVE_DIR` to point to the local directory where files will be monitored and copied from (defaults to `~/Drive` and creates the directory if it doesn't already exist on script run). `GDRIVE_DIR` is meant to be equivalent to your remote Google Drive's root directory. So, if you create `sample.txt` in `GDRIVE_DIR`, then you should see `sample.txt` at the root of your Google Drive after upload. If you create `BaseDir/NestedDir/sample.txt` in `GDRIVE_DIR`, then you should see that same directory structure and file when you open up Google Drive.
 5. Make script executable: `chmod +x gdrive.sh`.
